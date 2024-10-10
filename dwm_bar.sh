@@ -30,26 +30,30 @@ export SEP2="]"
 #. "$DIR/bar-functions/dwm_connman.sh"
 #. "$DIR/bar-functions/dwm_countdown.sh"
 #. "$DIR/bar-functions/dwm_currency.sh"
-#. "$DIR/bar-functions/dwm_date.sh"
-#. "$DIR/bar-functions/dwm_keyboard.sh"
+. "$DIR/bar-functions/dwm_date.sh"
+. "$DIR/bar-functions/dwm_keyboard.sh"
 #. "$DIR/bar-functions/dwm_loadavg.sh"
 #. "$DIR/bar-functions/dwm_mail.sh"
 #. "$DIR/bar-functions/dwm_mpc.sh"
-#. "$DIR/bar-functions/dwm_networkmanager.sh"
-#. "$DIR/bar-functions/dwm_pulse.sh"
+# . "$DIR/bar-functions/dwm_networkmanager.sh"
+. "$DIR/bar-functions/dwm_pulse.sh"
 #. "$DIR/bar-functions/dwm_resources.sh"
 #. "$DIR/bar-functions/dwm_spotify.sh"
 #. "$DIR/bar-functions/dwm_transmission.sh"
 #. "$DIR/bar-functions/dwm_vpn.sh"
-#. "$DIR/bar-functions/dwm_weather.sh"
+. "$DIR/bar-functions/dwm_weather.sh"
 #. "$DIR/bar-functions/dwm_network_speed.sh"
 
 parallelize() {
     while true
     do
         printf "Running parallel processes\n"
-        #dwm_networkmanager &
-        #dwm_weather &
+
+        dwm_date &
+        dwm_keyboard &
+        dwm_pulse &
+        dwm_weather &
+
         sleep 5
     done
 }
@@ -69,18 +73,18 @@ do
     #upperbar="$upperbar$(dwm_connman)"
     #upperbar="$upperbar$(dwm_countdown)"
     #upperbar="$upperbar$(dwm_currency)"
-    #upperbar="$upperbar$(dwm_date)"
-    #upperbar="$upperbar$(dwm_keyboard)"
+    upperbar="$upperbar$(dwm_date)"
+    upperbar="$upperbar$(dwm_keyboard)"
     #upperbar="$upperbar$(dwm_loadavg)"
     #upperbar="$upperbar$(dwm_mail)"
     #upperbar="$upperbar$(dwm_mpc)"
-    #upperbar="$upperbar$(dwm_pulse)"
+    upperbar="$upperbar$(dwm_pulse)"
     #upperbar="$upperbar$(dwm_resources)"
     #upperbar="$upperbar$(dwm_spotify)"
     #upperbar="$upperbar$(dwm_transmission)"
     #upperbar="$upperbar$(dwm_vpn)"
-    #upperbar="$upperbar${__DWM_BAR_NETWORKMANAGER__}"
-    #upperbar="$upperbar${__DWM_BAR_WEATHER__}"
+    # upperbar="$upperbar${__DWM_BAR_NETWORKMANAGER__}"
+    upperbar="$upperbar${__DWM_BAR_WEATHER__}"
     #upperbar="$upperbar$(dwm_network_speed)"; dwm_network_speed_record
    
     # Append results of each func one by one to the lowerbar string
