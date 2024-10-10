@@ -73,19 +73,19 @@ do
     #upperbar="$upperbar$(dwm_connman)"
     #upperbar="$upperbar$(dwm_countdown)"
     #upperbar="$upperbar$(dwm_currency)"
-    upperbar="$upperbar$(dwm_date)"
-    upperbar="$upperbar$(dwm_keyboard)"
     #upperbar="$upperbar$(dwm_loadavg)"
     #upperbar="$upperbar$(dwm_mail)"
     #upperbar="$upperbar$(dwm_mpc)"
-    upperbar="$upperbar$(dwm_pulse)"
     #upperbar="$upperbar$(dwm_resources)"
     #upperbar="$upperbar$(dwm_spotify)"
     #upperbar="$upperbar$(dwm_transmission)"
     #upperbar="$upperbar$(dwm_vpn)"
     # upperbar="$upperbar${__DWM_BAR_NETWORKMANAGER__}"
-    upperbar="$upperbar${__DWM_BAR_WEATHER__}"
     #upperbar="$upperbar$(dwm_network_speed)"; dwm_network_speed_record
+    upperbar="$upperbar${__DWM_BAR_WEATHER__}"
+    upperbar="$upperbar$(dwm_keyboard)"
+    upperbar="$upperbar$(dwm_pulse)"
+    upperbar="$upperbar$(dwm_date)"
    
     # Append results of each func one by one to the lowerbar string
     lowerbar=""
