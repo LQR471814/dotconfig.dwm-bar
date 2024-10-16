@@ -85,8 +85,8 @@ do
     # upperbar="$upperbar${__DWM_BAR_WEATHER__}"
     upperbar="$upperbar$(dwm_keyboard)"
     upperbar="$upperbar$(dwm_pulse)"
-    upperbar="$upperbar$(dwm_date)"
     upperbar="$upperbar$(dwm_battery)"
+    upperbar="$upperbar$(dwm_date)"
 
     # Append results of each func one by one to the lowerbar string
     lowerbar=""
