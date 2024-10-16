@@ -5,6 +5,9 @@
 
 # Dependencies: NetworkManager, curl
 
+OLD_CONNAME=""
+PUBLIC=""
+
 dwm_networkmanager () {
     CONNAME=$(nmcli -a | grep 'Wired connection' | awk 'NR==1{print $1}')
     if [ "$CONNAME" = "" ]; then
@@ -12,7 +15,12 @@ dwm_networkmanager () {
     fi
 
     PRIVATE=$(nmcli -a | grep 'inet4 192' | awk '{print $2}')
-    PUBLIC=$(curl -s https://ipinfo.io/ip)
+
+    # only refetch ip when connection name changed
+    if [ "$CONNAME" != "$OLD_CONNAME" ]; then
+        PUBLIC=$(curl -s https://ipinfo.io/ip)
+        OLD_CONNAME="$CONNAME"
+    fi
 
     if [ "$IDENTIFIER" = "unicode" ]; then
         export __DWM_BAR_NETWORKMANAGER__="${SEP1}🌐 ${CONNAME} ${PRIVATE} ${PUBLIC}${SEP2}"

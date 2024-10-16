@@ -24,7 +24,7 @@ export SEP2="]"
 #. "$DIR/bar-functions/dwm_alarm.sh"
 #. "$DIR/bar-functions/dwm_alsa.sh"
 #. "$DIR/bar-functions/dwm_backlight.sh"
-#. "$DIR/bar-functions/dwm_battery.sh"
+. "$DIR/bar-functions/dwm_battery.sh"
 #. "$DIR/bar-functions/dwm_ccurse.sh"
 #. "$DIR/bar-functions/dwm_cmus.sh"
 #. "$DIR/bar-functions/dwm_connman.sh"
@@ -55,7 +55,7 @@ parallelize() {
         dwm_battery &
         dwm_networkmanager &
 
-        sleep 5
+        sleep 1
     done
 }
 parallelize &
@@ -68,7 +68,6 @@ do
     #upperbar="$upperbar$(dwm_alarm)"
     #upperbar="$upperbar$(dwm_alsa)"
     #upperbar="$upperbar$(dwm_backlight)"
-    #upperbar="$upperbar$(dwm_battery)"
     #upperbar="$upperbar$(dwm_ccurse)"
     #upperbar="$upperbar$(dwm_cmus)"
     #upperbar="$upperbar$(dwm_connman)"
@@ -87,7 +86,8 @@ do
     upperbar="$upperbar$(dwm_keyboard)"
     upperbar="$upperbar$(dwm_pulse)"
     upperbar="$upperbar$(dwm_date)"
-   
+    upperbar="$upperbar$(dwm_battery)"
+
     # Append results of each func one by one to the lowerbar string
     lowerbar=""
     
