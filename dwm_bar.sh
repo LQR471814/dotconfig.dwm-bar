@@ -35,13 +35,13 @@ export SEP2="]"
 #. "$DIR/bar-functions/dwm_loadavg.sh"
 #. "$DIR/bar-functions/dwm_mail.sh"
 #. "$DIR/bar-functions/dwm_mpc.sh"
-# . "$DIR/bar-functions/dwm_networkmanager.sh"
+. "$DIR/bar-functions/dwm_networkmanager.sh"
 . "$DIR/bar-functions/dwm_pulse.sh"
 #. "$DIR/bar-functions/dwm_resources.sh"
 #. "$DIR/bar-functions/dwm_spotify.sh"
 #. "$DIR/bar-functions/dwm_transmission.sh"
 #. "$DIR/bar-functions/dwm_vpn.sh"
-. "$DIR/bar-functions/dwm_weather.sh"
+# . "$DIR/bar-functions/dwm_weather.sh"
 #. "$DIR/bar-functions/dwm_network_speed.sh"
 
 parallelize() {
@@ -52,7 +52,8 @@ parallelize() {
         dwm_date &
         dwm_keyboard &
         dwm_pulse &
-        dwm_weather &
+        dwm_battery &
+        dwm_networkmanager &
 
         sleep 5
     done
@@ -80,9 +81,9 @@ do
     #upperbar="$upperbar$(dwm_spotify)"
     #upperbar="$upperbar$(dwm_transmission)"
     #upperbar="$upperbar$(dwm_vpn)"
-    # upperbar="$upperbar${__DWM_BAR_NETWORKMANAGER__}"
+    upperbar="$upperbar${__DWM_BAR_NETWORKMANAGER__}"
     #upperbar="$upperbar$(dwm_network_speed)"; dwm_network_speed_record
-    upperbar="$upperbar${__DWM_BAR_WEATHER__}"
+    # upperbar="$upperbar${__DWM_BAR_WEATHER__}"
     upperbar="$upperbar$(dwm_keyboard)"
     upperbar="$upperbar$(dwm_pulse)"
     upperbar="$upperbar$(dwm_date)"
