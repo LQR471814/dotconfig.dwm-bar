@@ -44,20 +44,20 @@ export SEP2="]"
 # . "$DIR/bar-functions/dwm_weather.sh"
 #. "$DIR/bar-functions/dwm_network_speed.sh"
 
+__DWM_NETWORK_MANAGER__=/tmp/dwm_status_networkmanager
+touch $__DWM_NETWORK_MANAGER__
+__DWM_BATTERY__=/tmp/dwm_status_battery
+touch $__DWM_BATTERY__
+
 parallelize() {
     while true
     do
-        printf "Running parallel processes\n"
-
-        dwm_date &
-        dwm_keyboard &
-        dwm_pulse &
-        dwm_battery &
-        dwm_networkmanager &
-
-        sleep 1
+        echo $(dwm_networkmanager) > $__DWM_NETWORK_MANAGER__
+        echo $(dwm_battery) > $__DWM_BATTERY__
+        sleep 5
     done
 }
+
 parallelize &
 
 # Update dwm status bar every second
@@ -80,12 +80,12 @@ do
     #upperbar="$upperbar$(dwm_spotify)"
     #upperbar="$upperbar$(dwm_transmission)"
     #upperbar="$upperbar$(dwm_vpn)"
-    upperbar="$upperbar${__DWM_BAR_NETWORKMANAGER__}"
+    upperbar="$upperbar$(cat < $__DWM_NETWORK_MANAGER__)"
     #upperbar="$upperbar$(dwm_network_speed)"; dwm_network_speed_record
     # upperbar="$upperbar${__DWM_BAR_WEATHER__}"
-    upperbar="$upperbar$(dwm_keyboard)"
+    # upperbar="$upperbar$(dwm_keyboard)"
     upperbar="$upperbar$(dwm_pulse)"
-    upperbar="$upperbar$(dwm_battery)"
+    upperbar="$upperbar$(cat < $__DWM_BATTERY__)"
     upperbar="$upperbar$(dwm_date)"
 
     # Append results of each func one by one to the lowerbar string
