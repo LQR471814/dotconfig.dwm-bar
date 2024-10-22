@@ -18,7 +18,6 @@ dwm_networkmanager () {
 
     # only refetch ip when connection name changed
     if [ "$CONNAME" != "$OLD_CONNAME" ]; then
-        echo "REFETCH"
         PUBLIC=$(curl -s https://ipinfo.io/ip)
         OLD_CONNAME="$CONNAME"
     fi
